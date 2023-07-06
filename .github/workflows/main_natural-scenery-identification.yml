@@ -41,6 +41,7 @@ jobs:
             !venv/
             !.idea/
             !env
+            !README.md
             
 
   deploy:
