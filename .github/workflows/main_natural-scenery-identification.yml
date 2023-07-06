@@ -39,6 +39,9 @@ jobs:
           path: |
             . 
             !venv/
+            !.idea/
+            !env
+            !
 
   deploy:
     runs-on: ubuntu-latest
