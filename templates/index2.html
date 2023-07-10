@@ -2,59 +2,57 @@
 <html>
 <head>
 <title>CNN Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"  href="{{ url_for('styles', filename='style.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
+    <video id="bgVideo" autoplay loop muted>
+        <source src="{{ url_for('styles', filename='bd-vid.mp4') }}" type="video/mp4">
+    </video>
     <div class="logo">
         <a id ="imlogo" href=""><img src="{{ url_for('styles', filename='bg-logo.png') }}" alt="Company Logo"></a>
         <img id="bgImage" src="{{ url_for('styles', filename='bg.jpg') }}" alt="Company Background Img">
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h1 class="text-center">Image Classification of Natural Scenes</h1>
-                <h3 class="text-center">for Buildings, Forest, Glacier, Mountain, Sea, Street or Others</h3>
-                <hr>
-                {% if not filename %}
-                <h2 class="text-center">Select a file to upload</h2>
-                {% endif %}
+        <h1 class="text-center">Image Classification of Natural Scenes</h1>
+        <h3 class="text-center">for Buildings, Forest, Glacier, Mountain, Sea, Street or Others</h3>
+        <hr>
+        {% if not filename %}
+        <h2 class="text-center">Select a file to upload</h2>
+        {% endif %}
 
-                <p class="text-center">
-                    {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <ul>
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {% endwith %}
-                </p>
+        <p class="text-center">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </p>
 
-                {% if filename %}
-                    <div class="text-center">
-                        <img id="img_loaded" height="224" width="224" src="{{ url_for('display_image', filename=filename) }}">
-                        <p>Image above is predicted as: <b>{{label_pred}}</b> with probability: <b>{{pred_prob_percentage}}</b>%</p>
-                        <form method="get" action="/" enctype="multipart/form-data">
-                            <button id="clearButton" class="btn btn-info">Clear</button>
-                        </form>
-                    </div>
-                {% endif %}
-
-                {% if not filename %}
-                <form method="post" action="/" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <input type="file" name="file" class="form-control" autocomplete="off" required>
-                    </div>
-                    <div class="text-center">
-                        <input type="submit" value="Submit" class="btn btn-info">
-                    </div>
+        {% if filename %}
+            <div class="text-center">
+                <img id="img_loaded" height="224" width="224" src="{{ url_for('display_image', filename=filename) }}">
+                <p>Image above is predicted as: <b>{{label_pred}}</b> with probability: <b>{{pred_prob_percentage}}</b>%</p>
+                <form method="get" action="/" enctype="multipart/form-data">
+                    <button id="clearButton" class="btn btn-info">Clear</button>
                 </form>
-                {% endif %}
             </div>
-        </div>
+        {% endif %}
+
+        {% if not filename %}
+        <form method="post" action="/" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-info">
+            </div>
+        </form>
+        {% endif %}
     </div> 
 </body>
 </html>

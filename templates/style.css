@@ -1,16 +1,26 @@
 body {
-    background-color: #f2f2f2;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    margin-top: 50px;
+    margin: 0;
+    overflow: hidden;
 }
+
+#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
 
 .logo {
     position: relative;
     width: 600px;
-    margin: 0 auto;
+    margin: 40px 0 0 0;
 }
 
 .logo a{
@@ -28,6 +38,7 @@ body {
 }
 
 #bgImage {
+    border-radius: 4px;
     position: absolute;
     top: 0;
     left: 0;
@@ -38,8 +49,9 @@ body {
 }
 
 .container {
-    margin-top: 70px;
+    margin: 40px 0 0 0 ;
     max-width: 600px;
+    max-height: 480px;
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -62,31 +74,33 @@ h1, h3 {
 }
 
 .btn-info {
-    background-color: #337ab7;
+    background-color: #ff8b47;
     border-color: #337ab7;
     border-radius: 50px;
     padding: 10px 20px;
     color: #ffffff;
     font-weight: bold;
-    transition: background-color 0.3s ease;
 }
 
 .btn-info:hover {
-    background-color: #286090;
+    background-color: #ff0000;
     border-color: #286090;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 #img_loaded {
     border: 2px solid #337ab7;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .logo {
     width: 100%;
   }
 
   .container {
-    margin-top: 20px;
+    margin-top: 70px;
     width: 90%;
   }
 }
+
